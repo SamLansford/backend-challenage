@@ -20,6 +20,9 @@ class BackendChallenageApplicationTests {
     @Test
     public void testAddNew() {
         Person person = new Person();
+        person.setName("Bob");
+        person.setAge("35");
 
+        repo.save(person);
     }
 }
