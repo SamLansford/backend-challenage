@@ -22,12 +22,22 @@ class BackendChallenageApplicationTests {
     @Test
     public void testAddNew() {
         Person person = new Person();
-        person.setName("Bob");
-        person.setAge("35");
+        person.setName("Cat");
+        person.setAge("20");
 
         Person savedPerson = repo.save(person);
 
         Assertions.assertThat(savedPerson).isNotNull();
         Assertions.assertThat(savedPerson.getId()).isGreaterThan(0);
+    }
+
+    @Test
+    public void testAll() {
+       Iterable<Person> people = repo.findAll();
+       Assertions.assertThat(people).hasSizeGreaterThan(0);
+
+       for (Person person : people) {
+           System.out.println(person);
+       }
     }
 }
