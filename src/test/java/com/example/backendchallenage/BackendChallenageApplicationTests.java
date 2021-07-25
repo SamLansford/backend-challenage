@@ -11,6 +11,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 
+import java.util.Optional;
+
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
@@ -39,5 +41,15 @@ class BackendChallenageApplicationTests {
        for (Person person : people) {
            System.out.println(person);
        }
+    }
+
+    @Test
+    public void testUpdate() {
+        long personId = 1;
+        Optional<Person> optionalPerson = repo.findById(personId);
+        Person person = optionalPerson.get();
+        repo.save(person);
+
+        Person updatedPerson = repo.findById(personId).get();
     }
 }
