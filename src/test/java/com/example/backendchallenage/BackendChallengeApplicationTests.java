@@ -17,7 +17,7 @@ import java.util.Optional;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Rollback(value = false)
-class BackendChallenageApplicationTests {
+class BackendChallengeApplicationTests {
 
     @Autowired private PersonRepo repo;
 
@@ -48,8 +48,10 @@ class BackendChallenageApplicationTests {
         long personId = 1;
         Optional<Person> optionalPerson = repo.findById(personId);
         Person person = optionalPerson.get();
+        person.setName("kate");
         repo.save(person);
 
         Person updatedPerson = repo.findById(personId).get();
+        Assertions.assertThat(updatedPerson.getName()).isEqualTo("kate");
     }
 }
