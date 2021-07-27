@@ -54,4 +54,12 @@ class BackendChallengeApplicationTests {
         Person updatedPerson = repo.findById(personId).get();
         Assertions.assertThat(updatedPerson.getName()).isEqualTo("kate");
     }
+
+    @Test
+    public void testGet() {
+        long personId = 2;
+        Optional<Person> optionalPerson = repo.findById(personId);
+        Assertions.assertThat(optionalPerson).isPresent();
+        System.out.println(optionalPerson.get());
+    }
 }
