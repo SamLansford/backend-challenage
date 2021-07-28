@@ -62,4 +62,13 @@ class BackendChallengeApplicationTests {
         Assertions.assertThat(optionalPerson).isPresent();
         System.out.println(optionalPerson.get());
     }
+
+    @Test
+    public void testDelete() {
+        long userId = 1;
+        repo.deleteById(userId);
+        Optional<Person> optionalPerson = repo.findById(userId);
+        Assertions.assertThat(optionalPerson).isNotPresent();
+
+    }
 }
