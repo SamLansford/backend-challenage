@@ -13,6 +13,6 @@ public class personService {
     @Autowired private PersonRepo repo;
 
     public List<Person> listAll() {
-        return repo.findAll();
+        return (List<Person>) repo.findAll();
     }
 }
