@@ -20,8 +20,10 @@
                 </tr>
             </thead>
             <tbody>
-            <th:block th:each="people : ${people}">
-
+            <th:block th:each="person : ${people}">
+                <td th:text="${person.id}"></td>
+                <td th:text="${person.age}"></td>
+                <td th:text="${person.dateJoined}"></td>
             </th:block>
             </tbody>
         </table>
