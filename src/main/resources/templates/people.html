@@ -7,7 +7,9 @@
 <body>
 <div class="container-fluid text-center">
     <div><h2>Mange People</h2></div>
-
+    <div>
+        <a class="h3" th:href="@{/people/new}"></a>
+    </div>
     <div>
         <table class="table table-bordered">
             <thead class="thead-dark">
@@ -21,9 +23,13 @@
             </thead>
             <tbody>
             <th:block th:each="person : ${people}">
-                <td th:text="${person.id}"></td>
-                <td th:text="${person.age}"></td>
-                <td th:text="${person.dateJoined}"></td>
+                <td th:text="${person.id}">Id</td>
+                <td th:text="${person.age}">Age</td>
+                <td th:text="${person.dateJoined}">Date Joined</td>
+                <td>
+                    <a class="h4" th:href="@{/people/edit}">Edit</a>
+                    <a class="h4" th:href="@{/people/delete}">Delete</a>
+                </td>
             </th:block>
             </tbody>
         </table>
